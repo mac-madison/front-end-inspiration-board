@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
@@ -12,6 +11,36 @@ function App() {
   ///DISPLAY CARDS--- SHOWS NAME OF SELECTED BOARD--- SHOWS CARDS( LIKED(DIPLAYS LIKES), DELETED)
 
 
+return (
+  <div className="App">
+    <header className="app-header"> <h1> Inspiration Board</h1> </header>
+    <body>
+      <section className="boards-header-container">
+        <h2>Boards</h2>
+        <div id="scroll-box-div">
+          <ol id="all-board-titles"></ol>
+        </div>
+      </section>
+
+      <section className= "boards-container">
+        <h3>Selected Board</h3>
+      </section>
+      
+      <section className="create-new-board-container">
+        <h4>Create a New Board</h4>
+      </section>
+      
+      <section className="create-new-card-container">
+        <h5>Create a New Board</h5>
+      </section>
+
+      <footer>
+        <span> This is a Demo, please be gentle!</span>
+      </footer>
+    
+    </body>
+  </div>
+);
 }
 
 export default App;
