@@ -19,10 +19,11 @@ h1 {
   transform: rotate(-5deg) skew(-10deg);
 }
 
-h2 {
+h2, h3, h4 {
   border: 2px solid black;
   box-shadow: -15px 7px 1px black;
 }
+
 
 footer {
   text-align: center;
