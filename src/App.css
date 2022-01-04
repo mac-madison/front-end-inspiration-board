@@ -1,38 +1,82 @@
-.App {
+body {
+  margin: 3rem;
+  font-family: 'Open Sans', sans-serif;
+  color: black;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Permanent Marker", cursive;
+  padding: 0.6em 1em;
+  display: inline-block;
+  color: black;
+}
+
+h1 {
+  background-color: yellow;
+  transform: rotate(-5deg) skew(-10deg);
+}
+
+h2 {
+  border: 2px solid black;
+  box-shadow: -15px 7px 1px black;
+}
+
+footer {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.page-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  min-height: 100vh;
 }
 
-.App-link {
-  color: #61dafb;
+.content-container {
+  flex: 1 0 auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.boards-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
+
+.boards-list {
+  max-height: 9rem;
+  min-height: 9rem;
+  overflow: scroll;
+  margin-right: 2rem;
+  border: black solid 1px;
+}
+
+.new-board-form-container{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.new-board-form{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2em;
+  width: 100%;
+}
+
+.new-board-form-submit-btn,
+.new-board-form-toggle-btn{
+  padding: 0.5em;
+  background-color: white;
+  border: 2px solid black;
+}
+
+input {
+  box-sizing: content-box;
+}
+
+.invalid-form-input {
+  border: red solid 1px;
+  box-shadow: 0 0 7px red;
+}
+
