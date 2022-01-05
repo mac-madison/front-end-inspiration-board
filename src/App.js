@@ -38,8 +38,39 @@ function App() {
       });
   }, []);
 
+  // it  will be passed to card component as a prop
+  const deleteCard = (id) => {
+    axios
+      .delete(`${URL}/cards/${id}`)
+      .then((response) => {
+        const newCards = cards.filter((card) => card.id !== id);
+        setCards(newCards);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  // it  will be passed to card component as a prop
+  // update likes
+
+  const updateLikes = (id) => {
+    const newCards = cards.map((card) => {
+      if (card.id === id) {
+        card.likes_count += 1;
+        axios
+          .patch(`${URL}/cards/${id}/likes`)
+          .then(() => setCards(newCards))
+          .catch((err) => console.log(err));
+      }
+      return card;
+    });
+  };
+
   // pass board_id as an argument when board component is ready
-  // when click pass the
+  // when click pass the id to addCard function. How?
+  // CreateCard should be display only when a board is clicked
+  // create a card related to that board item
   const addCard = ({ message, board_id }) => {
     board_id = 1;
     axios
