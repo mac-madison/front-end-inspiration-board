@@ -1,21 +1,17 @@
 import { useState } from "react";
-import axios from "axios";
 import PropTypes from "prop-types";
 import "./CreateCard.css";
 
-const URL = "https://kinder-code.herokuapp.com";
-
-const CreateCard = ({ addCardCallback, board_id }) => {
+const CreateCard = ({ addCardCallback }) => {
   // get id from clickEvent on board , pass this value as board_id
 
-  board_id = 1;
   const [newCardData, setNewCardData] = useState({
     board_id: "",
     message: "",
   });
 
   const inputValid = () => {
-    return newCardData.message.length <= 40;
+    return newCardData.message.length <= 40 && newCardData.message.length >= 3;
   };
 
   const onMessageChange = (event) => {
@@ -41,25 +37,30 @@ const CreateCard = ({ addCardCallback, board_id }) => {
   };
 
   return (
-    <section>
-      <form onSubmit={onSubmit}>
-        <h2>Create a New Card</h2>
-
+    <section className="new-card-form-container">
+      <h2>Create a New Card</h2>
+      <form onSubmit={onSubmit} className="new-card-form__form">
         <label htmlFor="message">Message</label>
         <input
           type="text"
+          className={!inputValid() ? "invalid-form-input" : "none"}
           value={newCardData.message}
           onChange={onMessageChange}
         />
         <p> Preview: {newCardData.message} </p>
-        <button type="submit">submit</button>
+        <button
+          type="submit"
+          className="new-card-form-submit-btn"
+          disabled={!inputValid()}
+        >
+          submit
+        </button>
       </form>
     </section>
   );
 };
 
 CreateCard.propTypes = {
-  board_id: PropTypes.number.isRequired,
   addCardCallback: PropTypes.func.isRequired,
 };
 

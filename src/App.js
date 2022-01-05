@@ -37,6 +37,7 @@ function App() {
       });
   }, []);
 
+  // pass board_id as an argument when board component is ready
   const addCard = ({ message }) => {
     const board_id = 1;
     axios
