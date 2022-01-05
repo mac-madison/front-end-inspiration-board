@@ -14,7 +14,7 @@ function App() {
 
   ///DISPLAY CARDS--- SHOWS NAME OF SELECTED BOARD--- SHOWS CARDS( LIKED(DIPLAYS LIKES), DELETED)
 
-  // CARDS
+  // **********CARDS******************
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
