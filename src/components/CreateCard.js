@@ -6,7 +6,6 @@ const CreateCard = ({ addCardCallback }) => {
   // get id from clickEvent on board , pass this value as board_id
 
   const [newCardData, setNewCardData] = useState({
-    board_id: "",
     message: "",
   });
 
@@ -31,7 +30,6 @@ const CreateCard = ({ addCardCallback }) => {
     addCardCallback(newCardData);
     // reset state
     setNewCardData({
-      board_id: "",
       message: "",
     });
   };
