@@ -16,7 +16,7 @@ function App() {
 
   // **********CARDS******************
   const [cards, setCards] = useState([]);
-
+  const [visible, setVisible] = useState(false);
   useEffect(() => {
     axios
       .get(`${URL}/cards`)
@@ -37,6 +37,7 @@ function App() {
   }, []);
 
   // it  will be passed to card component as a prop
+  // onDeleteCallback -> passes deleteCard
   const deleteCard = (id) => {
     axios
       .delete(`${URL}/cards/${id}`)
@@ -51,6 +52,7 @@ function App() {
 
   // it  will be passed to card component as a prop
   // update likes
+  // onToggleLike -> updateLikes
 
   const updateLikes = (id) => {
     const newCards = cards.map((card) => {
@@ -89,6 +91,14 @@ function App() {
       .catch((err) => console.log(err.response.data));
   };
 
+  const toggleState = () => {
+    if (visible === false) {
+      setVisible(true);
+    } else {
+      setVisible(false);
+    }
+  };
+
   return (
     <body>
       <div className="App">
@@ -100,9 +110,7 @@ function App() {
               <section>
                 <h2>Boards</h2>
                 <ol class="boards-list">
-                  <li>
-                    <div>Pick-me-up Quotes</div>
-                  </li>
+                  <li onClick={() => toggleState()}> Pick me up!</li>
                 </ol>
               </section>
 
@@ -130,8 +138,8 @@ function App() {
                 </span>
               </section>
 
-              <section>
-                <CreateCard addCardCallback={addCard} />
+              <section class="new-board-form-container">
+                {visible ? <CreateCard addCardCallback={addCard} /> : null}
               </section>
             </section>
           </div>
