@@ -17,8 +17,6 @@ function App() {
   // CARDS
   const [cards, setCards] = useState([]);
 
-  const [status, setStatus] = useState("Loading...");
-
   useEffect(() => {
     axios
       .get(`${URL}/cards`)
