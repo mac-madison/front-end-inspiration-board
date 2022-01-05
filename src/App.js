@@ -16,7 +16,8 @@ function App() {
 
   // **********CARDS******************
   const [cards, setCards] = useState([]);
-  const [visible, setVisible] = useState(false);
+  const [visibleCardForm, setVisibleCardForm] = useState(false);
+
   useEffect(() => {
     axios
       .get(`${URL}/cards`)
@@ -91,11 +92,12 @@ function App() {
       .catch((err) => console.log(err.response.data));
   };
 
+  // we can pass this as a prop to board component
   const toggleState = () => {
-    if (visible === false) {
-      setVisible(true);
+    if (visibleCardForm === false) {
+      setVisibleCardForm(true);
     } else {
-      setVisible(false);
+      setVisibleCardForm(false);
     }
   };
 
@@ -139,7 +141,9 @@ function App() {
               </section>
 
               <section class="new-board-form-container">
-                {visible ? <CreateCard addCardCallback={addCard} /> : null}
+                {visibleCardForm ? (
+                  <CreateCard addCardCallback={addCard} />
+                ) : null}
               </section>
             </section>
           </div>
