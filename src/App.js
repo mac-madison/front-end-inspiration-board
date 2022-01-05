@@ -14,6 +14,7 @@ function App() {
 
   ///DISPLAY CARDS--- SHOWS NAME OF SELECTED BOARD--- SHOWS CARDS( LIKED(DIPLAYS LIKES), DELETED)
 
+  // CARDS
   const [cards, setCards] = useState([]);
 
   const [status, setStatus] = useState("Loading...");
@@ -38,8 +39,9 @@ function App() {
   }, []);
 
   // pass board_id as an argument when board component is ready
-  const addCard = ({ message }) => {
-    const board_id = 1;
+  // when click pass the
+  const addCard = ({ message, board_id }) => {
+    board_id = 1;
     axios
       .post(`${URL}/boards/${board_id}/cards`, {
         message,
