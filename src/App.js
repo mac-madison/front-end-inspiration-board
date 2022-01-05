@@ -54,7 +54,7 @@ function App() {
 
   const updateLikes = (id) => {
     const newCards = cards.map((card) => {
-      if (card.id === id) {
+      if (card.card_id === id) {
         card.likes_count += 1;
         axios
           .patch(`${URL}/cards/${id}/likes`)
