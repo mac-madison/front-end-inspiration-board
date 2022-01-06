@@ -37,7 +37,12 @@ const CreateCard = ({ addCardCallback }) => {
 
   return (
     <section className="new-card-form-container">
-      <h2>Create a New Card</h2>
+      <h4 class="playful" aria-label="CREATE NEW BOARD">
+        <span aria-hidden="true">CREATE </span>
+        <span aria-hidden="true">NEW </span>
+        <span aria-hidden="true">CARD </span>
+      </h4>
+
       <form onSubmit={onSubmit} className="new-card-form-form">
         <label htmlFor="message">Message</label>
         <input

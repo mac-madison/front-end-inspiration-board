@@ -97,7 +97,15 @@ const CardList = (props) => {
     <section className="cards-container">
       <section>
         {/* {visibleCardForm ? <CreateCard addCardCallback={addCard} /> : null} */}
-        <h2>Pick me up</h2>
+        <h2 class="playful" aria-label="PICK ME">
+          <span aria-hidden="true">P</span>
+          <span aria-hidden="true">I</span>
+          <span aria-hidden="true">C</span>
+          <span aria-hidden="true">K</span>
+          <span aria-hidden="true"> </span>
+          <span aria-hidden="true">M</span>
+          <span aria-hidden="true">E</span>
+        </h2>
         <div className="cards-item-container">{cardsItems}</div>
       </section>
       <CreateCard addCardCallback={addCard}></CreateCard>
