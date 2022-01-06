@@ -1,14 +1,36 @@
+import { useState } from "react";
+import PropTypes from "prop-types";
+import "./Card.css";
+
+const URL = "https://kinder-code.herokuapp.com";
+
 const Card = (props) => {
-    return (<div className='card-item'> 
-    <p className="card-message">HERE GOES DINAMICALLY POPULATED MESSAGE FOR CARD</p>
-    <ul className="card-options">
-        /Should display like count with magical js/
-        <li><p className="likes-count">💕</p></li>
-        /add on click event attribute for LIKE AND DELETE/
-        <li><p className= "click-for-like">+LIKE</p></li>
-        <li><p className="click-to-delete">DELETE</p></li>
-    </ul>
-    </div>);
+  return (
+    <div className="card-item">
+      <p className="card-item-message">{props.card.message}</p>
+      <ul className="card-options">
+        <li>
+          <p className="likes-count">💕{props.card.likes_count}</p>
+        </li>
+        <li>
+          <p
+            className="click-for-like"
+            onClick={() => props.updateLikes(props.card.card_id)}
+          >
+            +1
+          </p>
+        </li>
+        <li>
+          <p
+            className="click-to-delete"
+            onClick={() => props.deleteCard(props.card.card_id)}
+          >
+            Delete
+          </p>
+        </li>
+      </ul>
+    </div>
+  );
 };
 
 export default Card;

@@ -75,7 +75,7 @@ footer {
 
 input {
   box-sizing: content-box;
-  width: 150%;
+  width: 100%;
 }
 
 .invalid-form-input {
