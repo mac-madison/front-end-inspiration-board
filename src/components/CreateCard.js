@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+
 import "./CreateCard.css";
 
 const CreateCard = ({ addCardCallback }) => {
@@ -37,7 +38,7 @@ const CreateCard = ({ addCardCallback }) => {
   return (
     <section className="new-card-form-container">
       <h2>Create a New Card</h2>
-      <form onSubmit={onSubmit} className="new-card-form__form">
+      <form onSubmit={onSubmit} className="new-card-form-form">
         <label htmlFor="message">Message</label>
         <input
           type="text"
