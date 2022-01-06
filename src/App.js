@@ -1,18 +1,56 @@
 import React, { useState, useEffect } from "react";
+import NavBarCom from "./components/NavBar";
+import { Container } from "react-bootstrap";
 import axios from "axios";
 import CreateCard from "./components/CreateCard";
 import "./App.css";
+import Boards from "./components/Boards";
+import CreateBoard from "./components/CreateBoard";
 
 const URL = "https://kinder-code.herokuapp.com";
 
 function App() {
-  /// CREATE NEW BOARD- (TEXT INPUTS----TITLE, OWNER NAME) SUBMIT BUTTON
-  //CREATE NEW CARDS - CREATE NEW CARD- (TEXT INPUTS----MESSAGE) SUBMIT BUTTON
+  // ********** boredz ********
+  const [boards, setBoards] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [showBoardForm, setShowBoardForm] = useState(false);
 
-  ///BOARDS- DINAMIC TEXT LIST( LIST OF BOARDS---EACH BOARD TITLE IS BUTTON)
-  //SELECTED BOARD- WHEN BOARD TITLE CLICKED IN BOARDS---- DISPLAYS THE TITLE OF BOARD
+  useEffect(() => {
+    getBoards();
+  }, []);
 
-  ///DISPLAY CARDS--- SHOWS NAME OF SELECTED BOARD--- SHOWS CARDS( LIKED(DIPLAYS LIKES), DELETED)
+  const getBoards = async () => {
+    try {
+      const res = await axios.get(`${URL}/boards`);
+      setBoards(res.data);
+      setLoading(true);
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+
+  const addBoard = (newBoard) => {
+    axios
+      .post(`${URL}/boards`, {
+        title: newBoard.titleData,
+        owner: newBoard.ownerData,
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
+  const deleteBoard = async (id) => {
+    console.log("delete");
+    await axios.delete(`${URL}/boards/${id}`);
+  };
+
+  const hideBoardForm = () => {
+    return setShowBoardForm(false);
+  };
 
   // **********CARDS******************
   const [cards, setCards] = useState([]);
@@ -104,6 +142,18 @@ function App() {
   return (
     <body>
       <div className="App">
+        <Container>
+          <NavBarCom showForm={() => setShowBoardForm(true)} />
+          {showBoardForm ? (
+            <CreateBoard
+              addBoardCallback={addBoard}
+              hideBoard={hideBoardForm}
+            />
+          ) : null}
+
+          <Boards boards={boards} loading={loading} deleteBoard={deleteBoard} />
+        </Container>
+
         <div class="page-container">
           <div class="content-container">
             <h1>Inspiration Board</h1>
