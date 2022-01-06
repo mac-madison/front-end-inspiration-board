@@ -52,11 +52,11 @@ function App() {
                   Hide New Board Form
                 </span>
               </section>
-              <section>
-                <CardList />
-              </section>
             </section>
           </div>
+          <section>
+            <CardList />
+          </section>
           <footer>
             <span>This is a demo! Please be gentle!</span>
           </footer>
