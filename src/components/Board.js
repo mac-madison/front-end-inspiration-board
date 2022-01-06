@@ -1,9 +1,5 @@
-
-const Board = () => {
-    // here we add logic 
-    // When we click Board it shoud  return the title of the board
-    //when we click a board expands  Cards and Create new card
-
-}
+const Board = (props) => {
+    return (<div onClick={() => props.onBoardSelect(props.board)}>{props.board.title}</div>);
+};
 
 export default Board;
