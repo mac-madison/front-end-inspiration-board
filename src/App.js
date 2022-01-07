@@ -127,7 +127,7 @@ return (
         {isBoardFormVisible ? <CreateBoard createNewBoard={createNewBoard}></CreateBoard> : ''}
             <span onClick={toggleNewBoardForm} className='new-board-form-toggle-btn'>{isBoardFormVisible ? 'Hide New Board Form' : 'Show New Board Form'}</span>
         </section>
-        {selectedBoard.id ? <Cards board={selectedBoard}></Cards> : ''}
+        {selectedBoard.board_id ? <Cards board={selectedBoard}></Cards> : ''}
         </section>
         </div>
         <footer>
